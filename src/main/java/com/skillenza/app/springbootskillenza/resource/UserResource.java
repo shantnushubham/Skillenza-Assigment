@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/user")
@@ -24,6 +26,9 @@ public class UserResource {
     @PostMapping("/signup")
     public ResponseEntity<Object> addUser(@RequestBody Map<String, String> userMap) {
         try {
+            if (!checkEmail(userMap.get("email"))) {
+                return new ResponseEntity<>("Email is invalid", HttpStatus.BAD_REQUEST);
+            }
             if (!userMap.get("password").equals(userMap.get("confirmPassword"))) {
                 return new ResponseEntity<>("Passwords do not match.", HttpStatus.BAD_REQUEST);
             }
@@ -49,5 +54,11 @@ public class UserResource {
         } catch (Exception exception) {
             return new ResponseEntity<>(ERROR_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public boolean checkEmail(String email) {
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
