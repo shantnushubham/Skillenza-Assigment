@@ -1,6 +1,13 @@
 
 ### Getting Started with Spring Backend
 
+Used: Spring Boot
+
+Test Cases Covered: 
+1. User exists or not
+2. Passwords match or not
+3. Email is valid or not
+
 Dependencies:
 
 *Java (SE) 8*, _Maven_ and _MongoDB_
