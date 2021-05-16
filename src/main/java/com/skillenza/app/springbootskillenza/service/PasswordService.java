@@ -19,5 +19,4 @@ public class PasswordService {
         passwordVerified = BCrypt.checkpw(passwordPlaintext, storedHash);
         return (passwordVerified);
     }
-
 }

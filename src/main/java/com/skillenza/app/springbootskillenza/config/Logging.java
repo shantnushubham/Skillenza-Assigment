@@ -11,7 +11,6 @@ public class Logging {
         CommonsRequestLoggingFilter commonsRequestLoggingFilter = new CommonsRequestLoggingFilter();
         commonsRequestLoggingFilter.setIncludeClientInfo(true);
         commonsRequestLoggingFilter.setIncludeQueryString(true);
-        commonsRequestLoggingFilter.setIncludePayload(true);
         commonsRequestLoggingFilter.setIncludeHeaders(false);
         return commonsRequestLoggingFilter;
     }

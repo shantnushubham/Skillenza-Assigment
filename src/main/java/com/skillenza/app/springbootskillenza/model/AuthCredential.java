@@ -14,7 +14,7 @@ import java.util.UUID;
 @Setter
 @ToString
 @Document
-public class User {
+public class AuthCredential {
 
     @Nullable
     @Id
@@ -26,21 +26,12 @@ public class User {
     @NotNull
     private String password;
 
-    @NotNull
-    private String firstName;
-
-    @NotNull
-    private String lastName;
-
-    public User(@Nullable UUID id, String email, String password, String firstName, String lastName) {
+    public AuthCredential(@Nullable UUID id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
 
-    public User() {
-
+    public AuthCredential() {
     }
 }
