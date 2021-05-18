@@ -15,7 +15,7 @@ public class PasswordService {
     public static boolean checkPassword(String passwordPlaintext, String storedHash) {
         boolean passwordVerified;
         if (null == storedHash || !storedHash.startsWith("$2a$"))
-            throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
+            throw new IllegalArgumentException("Invalid hash provided for comparison");
         passwordVerified = BCrypt.checkpw(passwordPlaintext, storedHash);
         return (passwordVerified);
     }
